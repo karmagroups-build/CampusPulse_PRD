@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CampusPulse — Team & Launch Timeline</title>
+<meta name="description" content="CampusPulse v1 team assignments and six-phase launch timeline targeting September 20, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0B0714; --panel:#150E24; --panel-2:#1D1430;
+  --hairline:#2E2145; --hairline-strong:#453466;
+  --deep:#5A0CB8; --violet:#7A0FE0; --magenta:#A213E9; --orchid:#C25CF0; --lilac:#E8C9FA;
+  --green:#3EE2A8; --coral:#FF5D6C; --amber:#FAC775;
+  --text:#FFF; --muted:#9B93A8;
+  --grad:linear-gradient(135deg,#5A0CB8 0%,#A213E9 60%,#C25CF0 100%);
+  --f-d:'Fraunces',Georgia,serif; --f-u:'Inter',sans-serif; --f-m:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--void);color:var(--text);font-family:var(--f-u);
+  font-size:14.5px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 30px 90px;}
+
+/* ---------- cover ---------- */
+.cover{padding:70px 0 44px;border-bottom:1px solid var(--hairline);}
+.eyebrow{font-family:var(--f-m);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--orchid);margin-bottom:16px;}
+h1{font-family:var(--f-d);font-size:clamp(36px,6vw,52px);line-height:1.1;margin:0 0 14px;font-weight:600;}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.tag{font-family:var(--f-d);font-style:italic;font-size:17px;color:var(--lilac);margin:0 0 30px;}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:13px;}
+.meta div{border-top:1px solid var(--hairline);padding-top:9px;}
+.meta dt{font-family:var(--f-m);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.meta dd{margin:3px 0 0;font-size:12.5px;}
+
+/* ---------- back link ---------- */
+.back-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-m);font-size:11px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--orchid);text-decoration:none;
+  padding:8px 14px;border:1px solid var(--hairline);border-radius:8px;margin-bottom:28px;
+  transition:border-color .2s,color .2s;}
+.back-link:hover{border-color:var(--orchid);color:var(--lilac);}
+
+/* ---------- sections ---------- */
+section{padding:52px 0 4px;border-bottom:1px solid var(--hairline);}
+section:last-of-type{border-bottom:none;}
+h2{font-family:var(--f-d);font-size:28px;font-weight:600;margin:0 0 6px;}
+.intro{color:var(--lilac);max-width:690px;margin:0 0 26px;font-size:15px;}
+h3{font-size:15.5px;font-weight:600;margin:30px 0 11px;}
+h4{font-size:13px;font-weight:600;color:var(--lilac);margin:20px 0 8px;}
+p{margin:0 0 12px;} .muted{color:var(--muted);}
+code{font-family:var(--f-m);font-size:11.5px;color:var(--orchid);background:var(--panel-2);padding:2px 5px;border-radius:4px;}
+
+/* ---------- callout ---------- */
+.callout{background:var(--panel);border-left:3px solid var(--orchid);border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0;}
+.callout .t{font-family:var(--f-m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--orchid);margin-bottom:7px;}
+.callout.warn{border-left-color:var(--coral);} .callout.warn .t{color:var(--coral);}
+.callout.good{border-left-color:var(--green);} .callout.good .t{color:var(--green);}
+
+/* ---------- team ---------- */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin:20px 0 30px;}
+.tcard{background:var(--panel);border:1px solid var(--hairline);border-radius:12px;padding:18px 20px;position:relative;overflow:hidden;
+  transition:border-color .25s,transform .25s;}
+.tcard:hover{border-color:var(--hairline-strong);transform:translateY(-2px);}
+.tcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.tcard[data-accent="violet"]::before{background:var(--violet);}
+.tcard[data-accent="magenta"]::before{background:var(--magenta);}
+.tcard[data-accent="orchid"]::before{background:var(--orchid);}
+.tcard[data-accent="green"]::before{background:var(--green);}
+.tcard[data-accent="amber"]::before{background:var(--amber);}
+.tcard[data-accent="coral"]::before{background:var(--coral);}
+.tcard .t-name{font-family:var(--f-d);font-size:18px;font-weight:600;margin-bottom:2px;}
+.tcard .t-role{font-family:var(--f-m);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.tcard[data-accent="violet"] .t-role{color:var(--violet);}
+.tcard[data-accent="magenta"] .t-role{color:var(--magenta);}
+.tcard[data-accent="orchid"] .t-role{color:var(--orchid);}
+.tcard[data-accent="green"] .t-role{color:var(--green);}
+.tcard[data-accent="amber"] .t-role{color:var(--amber);}
+.tcard[data-accent="coral"] .t-role{color:var(--coral);}
+.tcard .t-domain{font-size:13px;color:var(--muted);line-height:1.5;}
+
+/* ---------- summary strip ---------- */
+.summary-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:24px 0 8px;}
+.scard{background:var(--panel);border:1px solid var(--hairline);border-radius:10px;padding:15px 14px;}
+.scard .v{font-family:var(--f-m);font-size:21px;color:var(--orchid);margin-bottom:4px;}
+.scard .k{font-size:11.5px;color:var(--muted);line-height:1.45;}
+
+/* ---------- timeline / gantt ---------- */
+.timeline-table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:12.5px;}
+.timeline-table th{text-align:left;font-family:var(--f-m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;padding:0 10px 8px 0;border-bottom:1px solid var(--hairline-strong);}
+.timeline-table td{padding:9px 10px 9px 0;border-bottom:1px solid var(--hairline);vertical-align:top;}
+.timeline-table .task-name{font-weight:500;}
+.timeline-table .owner{font-family:var(--f-m);font-size:10px;color:var(--orchid);}
+.phase-pill{display:inline-block;font-family:var(--f-m);font-size:9px;padding:3px 8px;border-radius:10px;white-space:nowrap;}
+.phase-pill.p1{background:rgba(122,15,224,.18);color:var(--violet);}
+.phase-pill.p2{background:rgba(162,19,233,.18);color:var(--magenta);}
+.phase-pill.p3{background:rgba(194,92,240,.16);color:var(--orchid);}
+.phase-pill.p4{background:rgba(62,226,168,.15);color:var(--green);}
+.phase-pill.p5{background:rgba(250,199,117,.15);color:var(--amber);}
+.phase-pill.p6{background:rgba(255,93,108,.15);color:var(--coral);}
+.milestone{background:var(--panel);border:1px solid var(--hairline-strong);border-radius:10px;padding:14px 18px;margin:8px 0;display:flex;align-items:center;gap:14px;}
+.milestone .m-date{font-family:var(--f-m);font-size:13px;color:var(--orchid);white-space:nowrap;min-width:72px;}
+.milestone .m-label{font-size:13.5px;}
+.milestone.launch-ms{border-color:var(--green);background:rgba(62,226,168,.06);}
+.milestone.launch-ms .m-date{color:var(--green);}
+
+footer{padding-top:38px;color:var(--muted);font-size:11.5px;}
+ul{margin:0 0 14px;padding-left:19px;} li{margin-bottom:7px;} li::marker{color:var(--orchid);}
+
+@media(max-width:600px){
+  .timeline-table{font-size:11.5px;}
+  .timeline-table th:nth-child(4),.timeline-table td:nth-child(4){display:none;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- COVER -->
+<div class="cover">
+  <a href="index.html" class="back-link">← Back to PRD</a>
+  <div class="eyebrow">Team & Launch Timeline</div>
+  <h1>Six people, six weeks,<br><span class="g">one launch.</span></h1>
+  <p class="tag">Every task traces back to a feature in the PRD. Launch target: September 20, 2026.</p>
+  <div class="meta">
+    <div><dt>Project</dt><dd>CampusPulse v1</dd></div>
+    <div><dt>Working window</dt><dd>Aug 11 → Sep 20, 2026</dd></div>
+    <div><dt>Team size</dt><dd>6 (3 BE, 1 FE, 1 Senior/Reviewer, 1 QA)</dd></div>
+    <div><dt>Launch target</dt><dd>September 20, 2026</dd></div>
+    <div><dt>Companion doc</dt><dd><a href="index.html" style="color:var(--orchid);text-decoration:none;">PRD v1.2</a></dd></div>
+  </div>
+</div>
+
+<!-- AT A GLANCE -->
+<section>
+  <h2>At a glance</h2>
+  <div class="summary-strip">
+    <div class="scard"><div class="v">6</div><div class="k">team members</div></div>
+    <div class="scard"><div class="v">6</div><div class="k">weekly phases</div></div>
+    <div class="scard"><div class="v">~57</div><div class="k">tasks total</div></div>
+    <div class="scard"><div class="v">Sep 7</div><div class="k">feature freeze</div></div>
+    <div class="scard"><div class="v">Sep 14</div><div class="k">code freeze</div></div>
+    <div class="scard"><div class="v">Sep 20</div><div class="k">🚀 launch day</div></div>
+  </div>
+</section>
+
+<!-- THE TEAM -->
+<section>
+  <h2>The team</h2>
+  <p class="intro">Domain ownership is strict — each person owns their vertical end-to-end. Wave reviews across all verticals.</p>
+
+  <div class="team-grid">
+    <div class="tcard" data-accent="violet">
+      <div class="t-name">Bayo</div>
+      <div class="t-role">Senior Backend · Tech Lead</div>
+      <div class="t-domain">Events, Feed, Stories domain — the core content engine. Architecture decisions, API contract design, and backend code review.</div>
+    </div>
+    <div class="tcard" data-accent="magenta">
+      <div class="t-name">Victor</div>
+      <div class="t-role">Backend</div>
+      <div class="t-domain">Auth, Users, Organizer accounts, student &amp; organizer verification flows. Owns the identity layer end-to-end.</div>
+    </div>
+    <div class="tcard" data-accent="orchid">
+      <div class="t-name">Batman</div>
+      <div class="t-role">Backend</div>
+      <div class="t-domain">RSVP, QR check-in, Notifications (push + in-app + email). Owns the attendance and communication pipeline.</div>
+    </div>
+    <div class="tcard" data-accent="green">
+      <div class="t-name">Joshua</div>
+      <div class="t-role">Frontend</div>
+      <div class="t-domain">Attendee-side UI — feed, stories viewer, event detail, RSVP flow, My Events, QR ticket view. The screens students see.</div>
+    </div>
+    <div class="tcard" data-accent="amber">
+      <div class="t-name">Wave</div>
+      <div class="t-role">Senior · Reviewer · Frontend-capable</div>
+      <div class="t-domain">Organizer-side UI — dashboard, create event, story composer, QR scanner. Code review across both frontend and backend.</div>
+    </div>
+    <div class="tcard" data-accent="coral">
+      <div class="t-name">Obioma</div>
+      <div class="t-role">QA</div>
+      <div class="t-domain">Test planning, flow verification, bug tracking, and launch readiness sign-off. Final gate before anything ships.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <h2>Timeline — six phases to launch</h2>
+  <div class="callout">
+    <div class="t">Working window</div>
+    <b>August 11 → September 20, 2026</b> — 6 working weeks. Phases overlap where domains are independent. QA runs continuously from Phase 3 onward.
+  </div>
+
+  <!-- Phase 1 -->
+  <h4><span class="phase-pill p1">Phase 1</span> &nbsp;Foundation — Aug 11 – Aug 17 <span class="muted">(Week 1)</span></h4>
+  <table class="timeline-table">
+    <thead><tr><th style="width:38%">Task</th><th style="width:24%">Owner</th><th style="width:20%">Dates</th><th>Depends on</th></tr></thead>
+    <tbody>
+      <tr><td class="task-name">Project scaffolding, CI/CD, repo structure</td><td class="owner">Bayo</td><td>Aug 11 – 12</td><td>—</td></tr>
+      <tr><td class="task-name">Database schema &amp; migrations (per ERD v1.2)</td><td class="owner">Bayo</td><td>Aug 11 – 14</td><td>—</td></tr>
+      <tr><td class="task-name">Auth service — signup, login, JWT, sessions</td><td class="owner">Victor</td><td>Aug 11 – 15</td><td>Schema</td></tr>
+      <tr><td class="task-name">Notification service skeleton (push + in-app)</td><td class="owner">Batman</td><td>Aug 13 – 17</td><td>Auth</td></tr>
+      <tr><td class="task-name">Frontend project setup, design system, routing</td><td class="owner">Joshua</td><td>Aug 11 – 14</td><td>—</td></tr>
+      <tr><td class="task-name">Organizer portal scaffold, shared component lib</td><td class="owner">Wave</td><td>Aug 11 – 14</td><td>—</td></tr>
+      <tr><td class="task-name">Test plan draft, environment setup, test accounts</td><td class="owner">Obioma</td><td>Aug 11 – 17</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <div class="milestone">
+    <div class="m-date">Aug 17</div>
+    <div class="m-label"><b>Milestone:</b> Auth works end-to-end. Both portals render. DB seeded.</div>
+  </div>
+
+  <!-- Phase 2 -->
+  <h4><span class="phase-pill p2">Phase 2</span> &nbsp;Core content engine — Aug 18 – Aug 24 <span class="muted">(Week 2)</span></h4>
+  <table class="timeline-table">
+    <thead><tr><th style="width:38%">Task</th><th style="width:24%">Owner</th><th style="width:20%">Dates</th><th>Depends on</th></tr></thead>
+    <tbody>
+      <tr><td class="task-name">Events API — CRUD, publish, capacity, categories</td><td class="owner">Bayo</td><td>Aug 18 – 22</td><td>Schema</td></tr>
+      <tr><td class="task-name">Feed API — chronological + proximity ranking</td><td class="owner">Bayo</td><td>Aug 22 – 24</td><td>Events API</td></tr>
+      <tr><td class="task-name">Student verification flow (email domain + manual ID)</td><td class="owner">Victor</td><td>Aug 18 – 21</td><td>Auth</td></tr>
+      <tr><td class="task-name">Organizer account &amp; verification flow</td><td class="owner">Victor</td><td>Aug 21 – 24</td><td>Auth</td></tr>
+      <tr><td class="task-name">RSVP API — create, cancel, capacity check</td><td class="owner">Batman</td><td>Aug 18 – 21</td><td>Events API</td></tr>
+      <tr><td class="task-name">QR code generation (signed token per RSVP)</td><td class="owner">Batman</td><td>Aug 21 – 24</td><td>RSVP API</td></tr>
+      <tr><td class="task-name">Feed UI — event cards, scroll, category filters</td><td class="owner">Joshua</td><td>Aug 18 – 22</td><td>Feed API</td></tr>
+      <tr><td class="task-name">Event detail page (attendee view)</td><td class="owner">Joshua</td><td>Aug 22 – 24</td><td>Events API</td></tr>
+      <tr><td class="task-name">Create event form &amp; publish flow</td><td class="owner">Wave</td><td>Aug 18 – 22</td><td>Events API</td></tr>
+      <tr><td class="task-name">Organizer dashboard — event list, RSVP live count</td><td class="owner">Wave</td><td>Aug 22 – 24</td><td>RSVP API</td></tr>
+    </tbody>
+  </table>
+  <div class="milestone">
+    <div class="m-date">Aug 24</div>
+    <div class="m-label"><b>Milestone:</b> An organizer can create an event. A student can see it in the feed, open it, and RSVP.</div>
+  </div>
+
+  <!-- Phase 3 -->
+  <h4><span class="phase-pill p3">Phase 3</span> &nbsp;Stories, check-in &amp; notifications — Aug 25 – Aug 31 <span class="muted">(Week 3)</span></h4>
+  <table class="timeline-table">
+    <thead><tr><th style="width:38%">Task</th><th style="width:24%">Owner</th><th style="width:20%">Dates</th><th>Depends on</th></tr></thead>
+    <tbody>
+      <tr><td class="task-name">Stories API — create, attach to event, 24h expiry</td><td class="owner">Bayo</td><td>Aug 25 – 28</td><td>Events API</td></tr>
+      <tr><td class="task-name">Media upload &amp; compression pipeline</td><td class="owner">Bayo</td><td>Aug 28 – 31</td><td>—</td></tr>
+      <tr><td class="task-name">Follow/unfollow organizers API</td><td class="owner">Victor</td><td>Aug 25 – 27</td><td>Organizer accounts</td></tr>
+      <tr><td class="task-name">Super Admin portal — verification queue, moderation</td><td class="owner">Victor</td><td>Aug 27 – 31</td><td>Verification flows</td></tr>
+      <tr><td class="task-name">QR check-in scanner API — validate, mark checked-in</td><td class="owner">Batman</td><td>Aug 25 – 28</td><td>QR generation</td></tr>
+      <tr><td class="task-name">Push notifications — RSVP confirm, event reminder, cancellation</td><td class="owner">Batman</td><td>Aug 28 – 31</td><td>Notification skeleton</td></tr>
+      <tr><td class="task-name">Stories viewer UI — full-screen, tap-through, CTA</td><td class="owner">Joshua</td><td>Aug 25 – 28</td><td>Stories API</td></tr>
+      <tr><td class="task-name">RSVP flow UI + My Events + QR ticket view</td><td class="owner">Joshua</td><td>Aug 28 – 31</td><td>RSVP API, QR gen</td></tr>
+      <tr><td class="task-name">QR scanner UI (camera-based, organizer portal)</td><td class="owner">Wave</td><td>Aug 25 – 28</td><td>Check-in API</td></tr>
+      <tr><td class="task-name">Story composer UI (organizer portal)</td><td class="owner">Wave</td><td>Aug 28 – 31</td><td>Stories API</td></tr>
+      <tr><td class="task-name">QA: Auth + Events + RSVP flow testing</td><td class="owner">Obioma</td><td>Aug 25 – 31</td><td>Phase 2 features</td></tr>
+    </tbody>
+  </table>
+  <div class="milestone">
+    <div class="m-date">Aug 31</div>
+    <div class="m-label"><b>Milestone:</b> Full attendee flow works: discover via feed + stories → RSVP → get QR → get scanned at door. Notifications fire.</div>
+  </div>
+
+  <!-- Phase 4 -->
+  <h4><span class="phase-pill p4">Phase 4</span> &nbsp;Polish &amp; secondary features — Sep 1 – Sep 7 <span class="muted">(Week 4)</span></h4>
+  <table class="timeline-table">
+    <thead><tr><th style="width:38%">Task</th><th style="width:24%">Owner</th><th style="width:20%">Dates</th><th>Depends on</th></tr></thead>
+    <tbody>
+      <tr><td class="task-name">Search API — full-text across events and organizers</td><td class="owner">Bayo</td><td>Sep 1 – 3</td><td>Events, Organizers</td></tr>
+      <tr><td class="task-name">Event analytics API — views, RSVP count, check-in rate</td><td class="owner">Bayo</td><td>Sep 3 – 5</td><td>Check-in data</td></tr>
+      <tr><td class="task-name">Feed ranking tuning (followed orgs, recency, proximity)</td><td class="owner">Bayo</td><td>Sep 5 – 7</td><td>Follow API</td></tr>
+      <tr><td class="task-name">Profile pages — student &amp; organizer public profiles</td><td class="owner">Victor</td><td>Sep 1 – 4</td><td>Follow API</td></tr>
+      <tr><td class="task-name">Attendee list export (CSV) for organizers</td><td class="owner">Victor</td><td>Sep 4 – 5</td><td>RSVP data</td></tr>
+      <tr><td class="task-name">In-app notification centre</td><td class="owner">Batman</td><td>Sep 1 – 4</td><td>Notification service</td></tr>
+      <tr><td class="task-name">Email notifications — event cancellation, verification</td><td class="owner">Batman</td><td>Sep 4 – 7</td><td>Notification service</td></tr>
+      <tr><td class="task-name">Search UI, social share buttons</td><td class="owner">Joshua</td><td>Sep 1 – 4</td><td>Search API</td></tr>
+      <tr><td class="task-name">Notification centre UI, follow/unfollow UI</td><td class="owner">Joshua</td><td>Sep 4 – 7</td><td>Notif centre, Follow API</td></tr>
+      <tr><td class="task-name">Post-event stats UI (organizer dashboard)</td><td class="owner">Wave</td><td>Sep 1 – 4</td><td>Analytics API</td></tr>
+      <tr><td class="task-name">Code review sweep — backend + frontend</td><td class="owner">Wave</td><td>Sep 4 – 7</td><td>Phase 3 complete</td></tr>
+      <tr><td class="task-name">QA: Stories, scanner, notifications, admin flows</td><td class="owner">Obioma</td><td>Sep 1 – 7</td><td>Phase 3 features</td></tr>
+    </tbody>
+  </table>
+  <div class="milestone">
+    <div class="m-date">Sep 7</div>
+    <div class="m-label"><b>Milestone:</b> Feature-complete. All v1 scope items functional. No new features after this date.</div>
+  </div>
+
+  <!-- Phase 5 -->
+  <h4><span class="phase-pill p5">Phase 5</span> &nbsp;Integration &amp; hardening — Sep 8 – Sep 14 <span class="muted">(Week 5)</span></h4>
+  <table class="timeline-table">
+    <thead><tr><th style="width:38%">Task</th><th style="width:24%">Owner</th><th style="width:20%">Dates</th><th>Depends on</th></tr></thead>
+    <tbody>
+      <tr><td class="task-name">Load testing — feed, RSVP burst (200/min), scanner</td><td class="owner">Bayo</td><td>Sep 8 – 10</td><td>Feature-complete</td></tr>
+      <tr><td class="task-name">API rate limiting, error handling, logging</td><td class="owner">Bayo</td><td>Sep 10 – 12</td><td>—</td></tr>
+      <tr><td class="task-name">Security audit — token validation, input sanitization</td><td class="owner">Victor</td><td>Sep 8 – 11</td><td>—</td></tr>
+      <tr><td class="task-name">Edge case hardening — capacity full, event cancel, duplicate scan</td><td class="owner">Batman</td><td>Sep 8 – 11</td><td>—</td></tr>
+      <tr><td class="task-name">Responsive / mid-range Android device testing</td><td class="owner">Joshua</td><td>Sep 8 – 11</td><td>—</td></tr>
+      <tr><td class="task-name">Cross-browser + connectivity degradation testing</td><td class="owner">Wave</td><td>Sep 8 – 11</td><td>—</td></tr>
+      <tr><td class="task-name">Bug fixes from QA (all hands)</td><td class="owner">All</td><td>Sep 11 – 14</td><td>QA reports</td></tr>
+      <tr><td class="task-name">Full regression — end-to-end both flows</td><td class="owner">Obioma</td><td>Sep 8 – 14</td><td>Feature-complete</td></tr>
+    </tbody>
+  </table>
+  <div class="milestone">
+    <div class="m-date">Sep 14</div>
+    <div class="m-label"><b>Milestone:</b> Code freeze. All critical and high bugs resolved. Performance targets met (§05).</div>
+  </div>
+
+  <!-- Phase 6 -->
+  <h4><span class="phase-pill p6">Phase 6</span> &nbsp;Launch prep &amp; deploy — Sep 15 – Sep 20 <span class="muted">(Week 6)</span></h4>
+  <table class="timeline-table">
+    <thead><tr><th style="width:38%">Task</th><th style="width:24%">Owner</th><th style="width:20%">Dates</th><th>Depends on</th></tr></thead>
+    <tbody>
+      <tr><td class="task-name">Production deployment &amp; infrastructure verification</td><td class="owner">Bayo</td><td>Sep 15 – 16</td><td>Code freeze</td></tr>
+      <tr><td class="task-name">Seed verified organizer accounts (launch partners)</td><td class="owner">Victor</td><td>Sep 15 – 17</td><td>Prod deploy</td></tr>
+      <tr><td class="task-name">Monitoring, alerting, on-call setup</td><td class="owner">Batman</td><td>Sep 15 – 17</td><td>Prod deploy</td></tr>
+      <tr><td class="task-name">Final UI polish, empty states, error screens</td><td class="owner">Joshua</td><td>Sep 15 – 17</td><td>—</td></tr>
+      <tr><td class="task-name">Organizer onboarding walkthrough / help content</td><td class="owner">Wave</td><td>Sep 15 – 17</td><td>—</td></tr>
+      <tr><td class="task-name">Smoke test on production</td><td class="owner">Obioma</td><td>Sep 17 – 18</td><td>Prod deploy</td></tr>
+      <tr><td class="task-name">Launch readiness sign-off</td><td class="owner">Obioma + Wave</td><td>Sep 18 – 19</td><td>Smoke test pass</td></tr>
+    </tbody>
+  </table>
+  <div class="milestone launch-ms">
+    <div class="m-date">Sep 20</div>
+    <div class="m-label"><b>🚀 v1 Launch</b> — CampusPulse goes live at the University of Ibadan.</div>
+  </div>
+
+  <div class="callout warn" style="margin-top:26px;">
+    <div class="t">Buffer &amp; risk</div>
+    The schedule has no formal buffer week. Phase 5 (hardening) absorbs minor overruns. If a Phase 2 or 3 deliverable slips by more than 3 days, the team must cut scope from Phase 4 secondary features (search, analytics, social share) — not push the launch date.
+  </div>
+</section>
+
+<footer>
+  CampusPulse — Team & Launch Timeline · Karma Groups · companion to <a href="index.html" style="color:var(--orchid);text-decoration:none;">PRD v1.2</a>
+</footer>
+
+</div>
+</body>
+</html>
