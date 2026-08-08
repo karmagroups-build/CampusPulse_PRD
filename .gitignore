@@ -1,0 +1,12 @@
+# Large executable files
+*.exe
+upscayl-2.15.0-win.exe
+
+# Dependencies
+node_modules/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

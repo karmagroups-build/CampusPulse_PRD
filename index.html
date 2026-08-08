@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CampusPulse — Product Requirements Document v1.2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0B0714; --panel:#150E24; --panel-2:#1D1430;
+  --hairline:#2E2145; --hairline-strong:#453466;
+  --deep:#5A0CB8; --violet:#7A0FE0; --magenta:#A213E9; --orchid:#C25CF0; --lilac:#E8C9FA;
+  --green:#3EE2A8; --coral:#FF5D6C; --amber:#FAC775;
+  --text:#FFF; --muted:#9B93A8;
+  --c-social:#C25CF0; --c-perf:#FF9EB0; --c-acad:#7FB2F0; --c-sport:#3EE2A8; --c-club:#FAC775;
+  --grad:linear-gradient(135deg,#5A0CB8 0%,#A213E9 60%,#C25CF0 100%);
+  --f-d:'Fraunces',Georgia,serif; --f-u:'Inter',sans-serif; --f-m:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--void);color:var(--text);font-family:var(--f-u);
+  font-size:14.5px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 30px 90px;}
+
+/* ---------- cover ---------- */
+.cover{padding:70px 0 44px;border-bottom:1px solid var(--hairline);}
+.eyebrow{font-family:var(--f-m);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--orchid);margin-bottom:16px;}
+h1{font-family:var(--f-d);font-size:clamp(36px,6vw,58px);line-height:1.05;margin:0 0 14px;font-weight:600;}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.tag{font-family:var(--f-d);font-style:italic;font-size:17px;color:var(--lilac);margin:0 0 30px;}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:13px;}
+.meta div{border-top:1px solid var(--hairline);padding-top:9px;}
+.meta dt{font-family:var(--f-m);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.meta dd{margin:3px 0 0;font-size:12.5px;}
+
+/* ---------- sections ---------- */
+section{padding:52px 0 4px;border-bottom:1px solid var(--hairline);}
+section:last-of-type{border-bottom:none;}
+.num{font-family:var(--f-m);font-size:10.5px;color:var(--orchid);letter-spacing:.14em;margin-bottom:8px;}
+h2{font-family:var(--f-d);font-size:28px;font-weight:600;margin:0 0 6px;}
+.intro{color:var(--lilac);max-width:690px;margin:0 0 26px;font-size:15px;}
+h3{font-size:15.5px;font-weight:600;margin:30px 0 11px;}
+h4{font-size:13px;font-weight:600;color:var(--lilac);margin:20px 0 8px;}
+p{margin:0 0 12px;} .muted{color:var(--muted);}
+code{font-family:var(--f-m);font-size:11.5px;color:var(--orchid);background:var(--panel-2);padding:2px 5px;border-radius:4px;}
+
+/* ---------- launch hero ---------- */
+.hero{background:var(--panel);border:1px solid var(--hairline-strong);border-radius:16px;
+  padding:30px 32px;margin:30px 0 26px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);}
+.hero h3{font-family:var(--f-d);font-size:22px;margin:0 0 6px;font-weight:600;}
+.hero .sub{color:var(--muted);font-size:13.5px;margin-bottom:22px;}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+@media(max-width:720px){.twocol{grid-template-columns:1fr;}}
+.lcol h4{font-family:var(--f-m);font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px;}
+.lcol.in h4{color:var(--green);} .lcol.out h4{color:var(--muted);}
+.lline{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;margin-bottom:9px;line-height:1.5;}
+.lline .mk{flex:none;width:15px;font-family:var(--f-m);font-size:12px;}
+.lcol.in .mk{color:var(--green);} .lcol.out .mk{color:var(--muted);}
+.lcol.out .lline{color:var(--muted);}
+
+/* metric strip */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:24px 0 8px;}
+.mcard{background:var(--panel);border:1px solid var(--hairline);border-radius:10px;padding:15px 14px;}
+.mcard .v{font-family:var(--f-m);font-size:21px;color:var(--orchid);margin-bottom:4px;}
+.mcard .k{font-size:11.5px;color:var(--muted);line-height:1.45;}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;margin:15px 0 24px;font-size:13px;}
+th{text-align:left;font-family:var(--f-m);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;padding:0 13px 9px 0;border-bottom:1px solid var(--hairline-strong);}
+td{padding:10px 13px 10px 0;border-bottom:1px solid var(--hairline);vertical-align:top;}
+td:last-child,th:last-child{padding-right:0;}
+
+/* status pills */
+.st{display:inline-block;font-family:var(--f-m);font-size:9.5px;padding:3px 8px;border-radius:12px;white-space:nowrap;}
+.st.launch{background:rgba(62,226,168,.15);color:var(--green);}
+.st.ltd{background:rgba(250,199,117,.15);color:var(--amber);}
+.st.next{background:var(--panel-2);color:var(--muted);}
+.st.new{background:rgba(194,92,240,.16);color:var(--orchid);}
+
+/* callout */
+.callout{background:var(--panel);border-left:3px solid var(--orchid);border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0;}
+.callout .t{font-family:var(--f-m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--orchid);margin-bottom:7px;}
+.callout.warn{border-left-color:var(--coral);} .callout.warn .t{color:var(--coral);}
+.callout.good{border-left-color:var(--green);} .callout.good .t{color:var(--green);}
+
+/* persona */
+.pcard{background:var(--panel);border:1px solid var(--hairline);border-radius:12px;padding:20px 22px;margin:14px 0;}
+.pcard .nm{font-family:var(--f-d);font-size:19px;font-weight:600;margin-bottom:3px;}
+.pcard .portal{font-family:var(--f-m);font-size:11px;color:var(--orchid);margin-bottom:14px;}
+.prow{display:grid;grid-template-columns:96px 1fr;gap:12px;margin-bottom:7px;font-size:13px;}
+.prow .k{font-family:var(--f-m);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px;}
+
+/* categories */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:11px;margin:18px 0;}
+.cat{background:var(--panel);border:1px solid var(--hairline);border-radius:10px;padding:13px 14px;}
+.cat .top{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.cat .dot{width:9px;height:9px;border-radius:3px;flex:none;}
+.cat .nm{font-size:12.5px;font-weight:600;}
+.cat .dsc{font-size:11px;color:var(--muted);line-height:1.45;}
+
+/* flow steps */
+.steps{counter-reset:s;margin:16px 0 22px;}
+.step{display:grid;grid-template-columns:26px 1fr;gap:13px;padding:11px 0;border-bottom:1px solid var(--hairline);}
+.step .n{font-family:var(--f-m);font-size:11px;color:var(--orchid);padding-top:2px;}
+.step .a{font-size:13.5px;font-weight:500;margin-bottom:3px;}
+.step .b{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+ul{margin:0 0 14px;padding-left:19px;} li{margin-bottom:7px;} li::marker{color:var(--orchid);}
+footer{padding-top:38px;color:var(--muted);font-size:11.5px;}
+.legendbar{display:flex;gap:16px;flex-wrap:wrap;margin:18px 0 4px;font-size:11.5px;color:var(--muted);align-items:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="eyebrow">Product Requirements Document · v1.2</div>
+  <h1>Every event on campus,<br><span class="g">in one feed.</span></h1>
+  <p class="tag">And a real headcount at the door.</p>
+  <div class="meta">
+    <div><dt>Prepared by</dt><dd>Karma Groups</dd></div>
+    <div><dt>Prepared for</dt><dd>CampusPulse — Ezeocha Obioma</dd></div>
+    <div><dt>Version</dt><dd>1.2 — supersedes v1.0</dd></div>
+    <div><dt>Status</dt><dd>Draft for review</dd></div>
+    <div><dt>Primary market</dt><dd>University of Ibadan (~33,000 students)</dd></div>
+    <div><dt>Platform</dt><dd>Responsive web app, three portals</dd></div>
+    <div><dt>Companion docs</dt><dd>Tech Architecture v1.2 · Data Model v1.2 · Brand v1.1</dd></div>
+    <div><dt>Owner</dt><dd>Product</dd></div>
+  </div>
+</div>
+
+<!-- LAUNCH AT A GLANCE -->
+<section>
+  <div class="num">00</div>
+  <h2>First launch, at a glance</h2>
+  <p class="intro">The single most important page in this document. Everything below elaborates on it; nothing below contradicts it. If a feature is not in the left column, it does not ship at first launch.</p>
+
+  <div class="hero">
+    <h3>What we are launching</h3>
+    <div class="sub">One campus. Free events only. Web. Three portals.</div>
+    <div class="twocol">
+      <div class="lcol in">
+        <h4>In — ships day one</h4>
+        <div class="lline"><span class="mk">→</span><span><b>A live feed</b> of every published event, filterable by the five categories</span></div>
+        <div class="lline"><span class="mk">→</span><span><b>Stories</b> — 24-hour posts from organizers, the main discovery surface</span></div>
+        <div class="lline"><span class="mk">→</span><span><b>Public event pages</b> — a shared link opens a real page, no account needed</span></div>
+        <div class="lline"><span class="mk">→</span><span><b>Free RSVP</b> with a signed QR code</span></div>
+        <div class="lline"><span class="mk">→</span><span><b>QR check-in at the door</b>, with manual check-in as the fallback</span></div>
+        <div class="lline"><span class="mk">→</span><span><b>Organizer dashboard</b> — create, publish, watch RSVPs, check in, review stats</span></div>
+        <div class="lline"><span class="mk">→</span><span><b>Super Admin portal</b> — verification, moderation, audit, settings</span></div>
+        <div class="lline"><span class="mk">→</span><span><b>Student &amp; organizer verification</b></span></div>
+        <div class="lline"><span class="mk">→</span><span><b>Notifications</b> — push where available, in-app centre for everyone, email for cancellations</span></div>
+      </div>
+      <div class="lcol out">
+        <h4>Out — deliberately deferred</h4>
+        <div class="lline"><span class="mk">✕</span><span>Paid ticketing, tiers, checkout, payouts <span class="st next">v2</span></span></div>
+        <div class="lline"><span class="mk">✕</span><span>More than one campus <span class="st next">v2+</span></span></div>
+        <div class="lline"><span class="mk">✕</span><span>Native mobile apps <span class="st next">v2</span></span></div>
+        <div class="lline"><span class="mk">✕</span><span>Event Groups (WhatsApp link gating) <span class="st next">v1.5</span></span></div>
+        <div class="lline"><span class="mk">✕</span><span>Creative Credits for DJs, MCs, photographers <span class="st next">v1.5</span></span></div>
+        <div class="lline"><span class="mk">✕</span><span>Comments and "3 friends going" <span class="st next">v2+</span></span></div>
+        <div class="lline"><span class="mk">✕</span><span>Multi-admin club accounts <span class="st next">v2</span></span></div>
+        <div class="lline"><span class="mk">✕</span><span>Conference agendas, assigned seating, sports brackets <span class="st next">v2</span></span></div>
+        <div class="lline"><span class="mk">✕</span><span>Event Wrapped annual recap <span class="st next">v3</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>What launch has to prove</h3>
+  <div class="strip">
+    <div class="mcard"><div class="v">8,000+</div><div class="k">weekly active students (~25% of campus)</div></div>
+    <div class="mcard"><div class="v">≥60%</div><div class="k">RSVP → check-in conversion</div></div>
+    <div class="mcard"><div class="v">150+</div><div class="k">verified organizer accounts</div></div>
+    <div class="mcard"><div class="v">40+</div><div class="k">events published per week</div></div>
+    <div class="mcard"><div class="v">≥35%</div><div class="k">day-7 attendee retention</div></div>
+    <div class="mcard"><div class="v">&lt;48h</div><div class="k">median verification queue age</div></div>
+  </div>
+
+  <div class="callout good">
+    <div class="t">The north star</div>
+    <b>Weekly RSVP'd attendees who actually check in.</b> Not signups, not downloads, not page views. When a scope or copy decision is genuinely close, choose the option that gets someone through a door. That is the tiebreaker for the whole launch.
+  </div>
+
+  <div class="legendbar">
+    <span>Status markers used throughout:</span>
+    <span class="st launch">launch</span>
+    <span class="st ltd">launch — limited</span>
+    <span class="st next">deferred</span>
+    <span class="st new">new in v1.2</span>
+  </div>
+</section>
+
+<!-- WHAT CHANGED -->
+<section>
+  <div class="num">01</div>
+  <h2>What changed since v1.0</h2>
+  <p class="intro">v1.0 was written before technical design. Three things came out of that work: a platform decision, two promises that had to be corrected, and a portal nobody had specified.</p>
+  <table>
+    <thead><tr><th style="width:27%">Change</th><th>What it means for launch</th></tr></thead>
+    <tbody>
+      <tr><td><b>We ship on the web</b> <span class="st new">new</span></td><td>A responsive web app, installable but not required to be. No app store, no download, no install size. A link forwarded to a WhatsApp group opens the actual event — which is the single biggest gain, because that is how discovery already spreads on this campus.</td></tr>
+      <tr><td><b>Events have categories</b> <span class="st new">new</span></td><td>Five fixed categories, required at creation. A conference at the ICC, a party at SUB Field and a play at Wole Soyinka Theatre are not the same product problem — they differ in scale, door speed and verification scrutiny. §3.1.</td></tr>
+      <tr><td><b>Super Admin portal</b> <span class="st new">new</span></td><td>v1.0 said "manual review" without saying where. Verification gates publishing, and it handles government ID documents — it needs a real interface, not a spreadsheet. §3.4.</td></tr>
+      <tr><td><b>Offline check-in is best-effort</b> <span class="st new">corrected</span></td><td>v1.0 promised the scanner works with zero backend dependency. A browser cannot guarantee that. It now degrades gracefully through a dropout and falls back to manual check-in. §5.3.</td></tr>
+      <tr><td><b>Push reach is platform-dependent</b> <span class="st new">corrected</span></td><td>Full on Android; on iOS only for students who add the site to their Home Screen. The in-app notification centre is the channel everyone actually has. §5.4.</td></tr>
+      <tr><td><b>Product thesis sharpened</b></td><td>v1.0 framed this as "discovery is a feed problem, hosting is a commerce problem." The durable asset is actually the campus social graph — see §2.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- OVERVIEW -->
+<section>
+  <div class="num">02</div>
+  <h2>Why this exists</h2>
+
+  <h3>The problem</h3>
+  <p>Event information at the University of Ibadan is fragmented across WhatsApp broadcast lists, Instagram stories and physical bulletin boards. Discovery depends on already being in the right group chat. Students miss events they would have attended; organizers under-fill rooms they have paid for; word-of-mouth favours whoever already has the biggest network.</p>
+
+  <h3>The thesis</h3>
+  <p>The durable asset CampusPulse is building is not the feed and not the checkout — it is the <b>campus social graph</b>: who follows whom, who attends what, who worked which event as a DJ, MC or photographer. A feed is easy to copy. A verified, campus-specific record of attendance and creative history is not, and it is what WhatsApp and Instagram structurally cannot replicate.</p>
+  <p>First launch exists to prove the smallest version of that graph works: organizers publish, attendees discover and RSVP, check-ins confirm the RSVP was real. Paid ticketing, when it arrives, monetises the graph — it is not the graph.</p>
+
+  <h3>The four scoping calls</h3>
+  <ul>
+    <li><b>Stories and feed ship at launch</b> — core to the product's identity, not a fast-follow.</li>
+    <li><b>No paid ticketing.</b> Free RSVP only. Payment processing, tiers and payouts are v2 — which keeps PCI scope and payout compliance out of launch entirely.</li>
+    <li><b>One campus.</b> University of Ibadan. Multi-campus is v2+.</li>
+    <li><b>Web, not native.</b> New in v1.2, and the reason two promises in §5 had to be corrected.</li>
+  </ul>
+</section>
+
+<!-- PERSONAS -->
+<section>
+  <div class="num">03</div>
+  <h2>Who it is for</h2>
+  <p class="intro">Two growth personas and one internal one. Each has its own portal, its own density, its own definition of a good day.</p>
+
+  <div class="pcard">
+    <div class="nm">Tobi — the attendee</div>
+    <div class="portal">campuspulse.ng · public pages readable without an account</div>
+    <div class="prow"><span class="k">Who</span><span>300-level student. On Instagram daily, in 6+ WhatsApp groups, misses events constantly.</span></div>
+    <div class="prow"><span class="k">Goal</span><span>Know what's happening tonight without scrolling five group chats.</span></div>
+    <div class="prow"><span class="k">Behavior</span><span>Opens apps to scroll, not to search. Decides in the last few hours, not days ahead.</span></div>
+    <div class="prow"><span class="k">Frustration</span><span>Finds out about a great event the day after, from someone else's story.</span></div>
+    <div class="prow"><span class="k">Success</span><span>Opens CampusPulse, sees what's live now, taps RSVP, shows up, scans in.</span></div>
+  </div>
+
+  <div class="pcard">
+    <div class="nm">Chidinma — the organizer</div>
+    <div class="portal">organizers.campuspulse.ng · requires a verified club account</div>
+    <div class="prow"><span class="k">Who</span><span>Final-year student, PRO for a faculty association or hall committee.</span></div>
+    <div class="prow"><span class="k">Goal</span><span>A real headcount before the event, not a guess from group chat reactions.</span></div>
+    <div class="prow"><span class="k">Behavior</span><span>Posts flyers to WhatsApp and Instagram; tracks RSVPs manually or not at all.</span></div>
+    <div class="prow"><span class="k">Frustration</span><span>No visibility into who is coming. No way to reach people outside the group.</span></div>
+    <div class="prow"><span class="k">Success</span><span>Publishes in minutes, watches RSVPs arrive, checks people in at the door.</span></div>
+  </div>
+
+  <div class="pcard">
+    <div class="nm">The reviewer — internal <span class="st new">new in v1.2</span></div>
+    <div class="portal">admin.campuspulse.ng · never publicly linked</div>
+    <div class="prow"><span class="k">Who</span><span>CampusPulse team member — support, moderator or super admin.</span></div>
+    <div class="prow"><span class="k">Goal</span><span>Approve real organizers fast, catch fake ones, and answer "who saw that student's ID and when" without hesitating.</span></div>
+    <div class="prow"><span class="k">Success</span><span>A queue that never silently grows and a decision trail that needs no reconstruction.</span></div>
+  </div>
+
+  <p class="muted" style="font-size:12.5px;">A fourth persona — the Creative (DJ, MC, photographer) — arrives with Creative Credits in v1.5. Noted so design is not blindsided next phase.</p>
+</section>
+
+<!-- SCOPE -->
+<section>
+  <div class="num">04</div>
+  <h2>Scope, feature by feature</h2>
+
+  <h3>3.1 Event categories <span class="st launch">launch</span></h3>
+  <p>Required at creation. Drives feed filtering, expected door throughput and verification scrutiny.</p>
+  <div class="cats">
+    <div class="cat"><div class="top"><span class="dot" style="background:var(--c-social)"></span><span class="nm">Social / Party</span></div>
+      <div class="dsc">SUB Field, hall car parks, faculty lawns. 200–2,000, burst check-in, Stories-driven.</div></div>
+    <div class="cat"><div class="top"><span class="dot" style="background:var(--c-perf)"></span><span class="nm">Performance / Arts</span></div>
+      <div class="dsc">Wole Soyinka Theatre, Trenchard Hall. Steady doors, possible multiple showings.</div></div>
+    <div class="cat"><div class="top"><span class="dot" style="background:var(--c-acad)"></span><span class="nm">Academic / Conference</span></div>
+      <div class="dsc">ICC, faculty lecture halls. Half-day to multi-day, higher verification scrutiny.</div></div>
+    <div class="cat"><div class="top"><span class="dot" style="background:var(--c-sport)"></span><span class="nm">Sports / Recreation</span></div>
+      <div class="dsc">Sports complex, hall courts. Burst at kickoff, then steady.</div></div>
+    <div class="cat"><div class="top"><span class="dot" style="background:var(--c-club)"></span><span class="nm">Club / Society</span></div>
+      <div class="dsc">Lecture theatres, common rooms. Scanner often optional.</div></div>
+  </div>
+  <p class="muted" style="font-size:12.5px;">Out of scope at launch regardless of category: multi-session conference agendas, assigned seating, sports brackets.</p>
+
+  <h3>3.2 Attendee portal</h3>
+  <table>
+    <thead><tr><th style="width:34%">Feature</th><th>Notes</th><th style="width:16%">Status</th></tr></thead>
+    <tbody>
+      <tr><td>Live feed</td><td>Recency-ranked cards, filterable by category. No separate browse tab.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Public event pages <span class="st new">new</span></td><td>Server-rendered, indexable, shareable preview. The front door for a forwarded link.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Stories</td><td>24-hour posts — lineup drops, almost-full alerts, day-of reminders.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Event detail</td><td>Description, time, location, host, category, live RSVP count.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Free RSVP</td><td>One tap. Generates the signed QR code.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>QR code view</td><td>Displays offline once loaded. Wallet passes are later.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Following organizers</td><td>Prioritises their events and stories in the feed.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Student verification</td><td>Email domain, or manual ID review via the admin portal.</td><td><span class="st ltd">limited</span></td></tr>
+      <tr><td>Search</td><td>Text search across events and organizers.</td><td><span class="st ltd">limited</span></td></tr>
+      <tr><td>Paid tickets</td><td>Needs a payment processor.</td><td><span class="st next">v2+</span></td></tr>
+      <tr><td>Comments, "3 friends going"</td><td>Needs a social graph beyond organizer-following.</td><td><span class="st next">v2+</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.3 Organizer portal</h3>
+  <table>
+    <thead><tr><th style="width:34%">Feature</th><th>Notes</th><th style="width:16%">Status</th></tr></thead>
+    <tbody>
+      <tr><td>Club profile</td><td>Verified badge, follower list.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Create free event</td><td>Title, description, category, location, date/time, capacity, cover image.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Post a Story</td><td>Attached to a live or upcoming event.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>RSVP dashboard</td><td>Live count, attendee list export.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>QR scanner</td><td>Browser camera. Best-effort offline — see §5.3.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Manual check-in <span class="st new">new</span></td><td>Search a name, mark present. The stated fallback, one tab from the scanner.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Post-event stats</td><td>Final counts, check-in rate, flagged duplicate scans.</td><td><span class="st ltd">limited</span></td></tr>
+      <tr><td>Ticketing, payouts</td><td>Tiers, pricing, bank details, fee transparency.</td><td><span class="st next">v2+</span></td></tr>
+      <tr><td>Multi-admin accounts</td><td>Schema exists at launch; no interface to add members yet.</td><td><span class="st next">v2</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.4 Super Admin portal <span class="st new">new in v1.2</span></h3>
+  <div class="callout">
+    <div class="t">Why this is in the first launch</div>
+    Verification gates publishing, so it sits directly on the cold-start risk in §7 — a slow queue is a slow launch. It also handles photographs of government identity documents, which cannot responsibly live in a shared inbox under the Nigeria Data Protection Act. This portal was always implied by "manual review"; it now has an interface and an owner.
+  </div>
+  <table>
+    <thead><tr><th style="width:44%">Surface</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Organizer verification queue — approve, reject, request more info</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Student ID review queue — super admin only</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Moderation — unpublish, suspend, dismiss reports</td><td><span class="st ltd">limited</span></td></tr>
+      <tr><td>Platform role administration</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Platform settings — notification cap and feature flags, changeable without a deploy</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Audit log — every privileged action, including each ID document view</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Internal documentation hub — runbooks, decisions, API reference</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Full moderation queue with dedicated staffing</td><td><span class="st next">v3</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.5 Platform-wide</h3>
+  <table>
+    <thead><tr><th style="width:34%">Feature</th><th>Notes</th><th style="width:16%">Status</th></tr></thead>
+    <tbody>
+      <tr><td>Push notifications</td><td>Reach is platform-dependent — §5.4.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>In-app notification centre <span class="st new">new</span></td><td>The channel every user has, regardless of platform or permission.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Email for critical notices <span class="st new">new</span></td><td>Cancellations and material time/venue changes only.</td><td><span class="st launch">launch</span></td></tr>
+      <tr><td>Multi-campus</td><td>Campus-scoping across data, UI and discovery.</td><td><span class="st next">v2+</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- FLOWS -->
+<section>
+  <div class="num">05</div>
+  <h2>The three flows</h2>
+  <p class="intro">Every screen in the build should trace back to a step here. Wireframes for all three exist as a companion document.</p>
+
+  <h3>Discover → RSVP → check in</h3>
+  <div class="steps">
+    <div class="step"><span class="n">01</span><span><span class="a">Opens a shared link, or the feed</span><span class="b">A forwarded link opens the public event page directly — no sign-in to view. Opening the app loads the feed, ranked by recency, filterable by category.</span></span></div>
+    <div class="step"><span class="n">02</span><span><span class="a">Taps a Story</span><span class="b">Full-screen 24-hour content; taps through to event detail if a CTA is attached.</span></span></div>
+    <div class="step"><span class="n">03</span><span><span class="a">Taps RSVP</span><span class="b">Prompts sign-in if needed, confirms in under a second, generates the signed QR token, adds to My Tickets.</span></span></div>
+    <div class="step"><span class="n">04</span><span><span class="a">Gets a reminder</span><span class="b">~30 minutes before. Push, in-app centre, or email depending on what they have enabled.</span></span></div>
+    <div class="step"><span class="n">05</span><span><span class="a">Opens the QR code at the venue</span><span class="b">Displays without a live connection once loaded.</span></span></div>
+    <div class="step"><span class="n">06</span><span><span class="a">Gets scanned, or checked in manually</span><span class="b">Verified locally where possible. Duplicate and ambiguous scans never surface to the attendee — they resolve in the organizer's dashboard afterwards.</span></span></div>
+  </div>
+  <p class="muted" style="font-size:12.5px;"><b>Edge cases to design:</b> event fills while deciding · overlapping RSVPs (soft problem, not blocked) · screenshot shared with a friend (logged, not prevented) · event cancelled after RSVP · link opened on iOS Safari with nothing installed — steps 1–3 must work in a plain browser tab.</p>
+
+  <h3>Create → publish → manage → check in</h3>
+  <div class="steps">
+    <div class="step"><span class="n">01</span><span><span class="a">Creates the organizer account</span><span class="b">Submits club verification, which enters the admin queue.</span></span></div>
+    <div class="step"><span class="n">02</span><span><span class="a">Creates an event</span><span class="b">Category required. All fields required to publish.</span></span></div>
+    <div class="step"><span class="n">03</span><span><span class="a">Publishes</span><span class="b">Live in the feed and gets a public page immediately; appears in followers' feeds first.</span></span></div>
+    <div class="step"><span class="n">04</span><span><span class="a">Posts a Story</span><span class="b">Visible in the Stories row for 24 hours.</span></span></div>
+    <div class="step"><span class="n">05</span><span><span class="a">Monitors RSVPs</span><span class="b">Live count, exportable attendee list.</span></span></div>
+    <div class="step"><span class="n">06</span><span><span class="a">Opens the scanner at the door</span><span class="b">Camera scan, best-effort offline. Manual check-in sits one tab away — not a separate flow.</span></span></div>
+    <div class="step"><span class="n">07</span><span><span class="a">Reviews post-event stats</span><span class="b">Final RSVP count, check-in count, check-in rate, flagged scans.</span></span></div>
+  </div>
+
+  <h3>Verification <span class="st new">new in v1.2</span></h3>
+  <div class="steps">
+    <div class="step"><span class="n">01</span><span><span class="a">Subject submits</span><span class="b">Club evidence, or an ID photo where the email domain path does not apply.</span></span></div>
+    <div class="step"><span class="n">02</span><span><span class="a">Reviewer claims and reviews</span><span class="b">Item soft-locks to that reviewer. ID documents render in a short-lived view, never downloadable.</span></span></div>
+    <div class="step"><span class="n">03</span><span><span class="a">Decision</span><span class="b">A note is required on rejection or info-requested. The subject is notified. An approved ID review deletes the underlying document immediately.</span></span></div>
+  </div>
+</section>
+
+<!-- NFR -->
+<section>
+  <div class="num">06</div>
+  <h2>What it has to withstand</h2>
+  <p class="intro">Deliberately modest — one campus, no money moving. Two entries are corrections from v1.0.</p>
+
+  <table>
+    <thead><tr><th style="width:34%">Dimension</th><th style="width:22%">Target</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Peak concurrent users</td><td>3,000–5,000</td><td>A major event trending spikes feed traffic sharply.</td></tr>
+      <tr><td>RSVP burst</td><td>200/min sustained</td><td>Handled synchronously — roughly 3 writes a second.</td></tr>
+      <tr><td>Check-in throughput</td><td>1 scan per 1–2 sec per door</td><td>Social/Party is the binding case; conferences are far below it.</td></tr>
+      <tr><td>Public event page (cold)</td><td>&lt; 2.5 sec</td><td>First impression for someone who has never used CampusPulse.</td></tr>
+      <tr><td>Feed load (cold)</td><td>&lt; 2.5 sec</td><td>Slower than this reads as broken.</td></tr>
+      <tr><td>RSVP confirmation</td><td>&lt; 1 sec</td><td>The core conversion action.</td></tr>
+      <tr><td>QR validation</td><td>&lt; 500 ms on-device</td><td>Local signature check, not a round trip.</td></tr>
+      <tr><td>Uptime</td><td>99.5%</td><td>~3.6 hrs/month. Not a payments platform yet.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <div class="t">Corrected from v1.0 — check-in resilience</div>
+    v1.0 committed the scanner to <i>zero backend dependency during the event</i>. A browser cannot guarantee that: service workers can be evicted and iOS has no background sync. The scanner now functions through a dropout of <b>minutes to hours</b> and degrades to manual check-in when it cannot. The fallback is not optional — it ships as a peer tab beside the scanner.
+  </div>
+
+  <div class="callout warn">
+    <div class="t">Corrected from v1.0 — notification reach</div>
+    Push works fully on Android. On iOS it requires the student to have added the site to their Home Screen, and Apple permits no install prompt — so most iOS users will never enable it unprompted. The <b>in-app notification centre is the guaranteed channel</b>, and cancellations and venue changes also go by email, because those are the cases where silence means a wasted trip.
+  </div>
+
+  <h3>Security and privacy at launch</h3>
+  <ul>
+    <li>Student emails and ID document photographs are personal data under the NDPA from day one — not only once payments arrive.</li>
+    <li>ID documents are super-admin-only, viewed in a short-lived non-downloadable view, and deleted on the verification decision.</li>
+    <li>Every view of an ID document is written to the audit log.</li>
+    <li>QR tokens are cryptographically signed. Screenshot sharing is <b>detected, not prevented</b> — an accepted launch limitation.</li>
+  </ul>
+</section>
+
+<!-- RISKS -->
+<section>
+  <div class="num">07</div>
+  <h2>What could go wrong</h2>
+
+  <table>
+    <thead><tr><th style="width:26%">Risk</th><th style="width:34%">Why it matters</th><th>Mitigation at launch</th></tr></thead>
+    <tbody>
+      <tr><td><b>Cold start</b></td><td>An empty feed looks dead to attendees; no attendees looks pointless to organizers.</td><td>Recruit and verify a critical mass of organizers across categories <i>before</i> attendee launch. Queue age tracks whether it is working.</td></tr>
+      <tr><td><b>Verification bottleneck</b></td><td>Manual review does not scale and gates publishing.</td><td>Scope review tightly to UI-affiliated emails and known student leadership. Make queue depth visible from day one.</td></tr>
+      <tr><td><b>Screenshot sharing</b></td><td>A forwarded QR undermines headcount accuracy.</td><td>Detection over prevention — every scan logged, duplicates surfaced post-event.</td></tr>
+      <tr><td><b>iOS install friction</b> <span class="st new">new</span></td><td>Most iPhone users never add the site to their Home Screen, so push does not reach them.</td><td>Treat push as a bonus channel. In-app centre and email carry what must land.</td></tr>
+      <tr><td><b>Browser storage eviction</b> <span class="st new">new</span></td><td>A scanner used once a month is the profile most likely to lose cached data.</td><td>Manual check-in fallback plus a pre-event readiness check, rather than finding out at the door.</td></tr>
+      <tr><td><b>Event quality</b></td><td>Fake or low-quality events erode trust early.</td><td>Only verified organizers can publish.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Still open</h3>
+  <ul>
+    <li><b>Waitlist</b> — when an event fills, does RSVP close or open a waitlist?</li>
+    <li><b>Verification coverage</b> — what share of students actually hold an @stu.ui.edu.ng address? If low, manual review is the primary path, not a fallback, and the admin queue is much busier than planned.</li>
+    <li><b>Notification cap</b> — the mechanism is built and configurable; the number is not decided.</li>
+    <li><b>Moderation ownership</b> — who works the reports queue day to day.</li>
+    <li><b>Native organizer app</b> — worth deciding before v1.5, since it would recover a guaranteed-offline scanner for the one persona that needs it.</li>
+  </ul>
+</section>
+
+<!-- AFTER LAUNCH -->
+<section>
+  <div class="num">08</div>
+  <h2>After launch</h2>
+  <p class="intro">Sequenced by dependency, not just priority. Nothing here delays or blocks the first launch.</p>
+
+  <h3>v1.5 — small, additive, immediately after</h3>
+  <table>
+    <thead><tr><th style="width:26%">Capability</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td><b>Event Groups</b></td><td>Not a WhatsApp API integration — Meta's Groups API caps at 8 participants and unofficial providers risk the organizer's number being banned. The organizer pastes their own group link and it is shown only to students who have RSVP'd, which is more access control than exists today.</td></tr>
+      <tr><td><b>Creative Credits</b></td><td>Organizers credit the DJs, MCs and photographers who worked an event; those people accept the credit and accumulate a verified performance history backed by real check-in counts. This is the strongest answer to the cold-start risk — creatives bring organizers with them, and the history exists nowhere else.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Later</h3>
+  <table>
+    <thead><tr><th style="width:16%">Phase</th><th style="width:34%">Capability</th><th>Gated on</th></tr></thead>
+    <tbody>
+      <tr><td><span class="st next">v2</span></td><td>Paid ticketing, tiers, checkout, payouts</td><td>The discovery + attendance loop proving itself first.</td></tr>
+      <tr><td><span class="st next">v2</span></td><td>Multi-admin club accounts</td><td>Schema already exists; needs interface.</td></tr>
+      <tr><td><span class="st next">v2</span></td><td>Conference agendas, assigned seating</td><td>Category-aware scheduling and seat-map data.</td></tr>
+      <tr><td><span class="st next">v2</span></td><td>Native organizer app</td><td>Recovers guaranteed offline check-in for the persona that needs it.</td></tr>
+      <tr><td><span class="st next">v2</span></td><td>In-app event chat</td><td>Only if Event Groups shows real demand first.</td></tr>
+      <tr><td><span class="st next">v2+</span></td><td>Multi-campus</td><td>Proof of the model at UI first.</td></tr>
+      <tr><td><span class="st next">v2+</span></td><td>Comments, "3 friends going", wallet passes</td><td>A richer social graph.</td></tr>
+      <tr><td><span class="st next">v3</span></td><td>Event Wrapped annual recap</td><td>Two full semesters of check-in and category data — which is exactly why categories and retained history are in the launch schema.</td></tr>
+      <tr><td><span class="st next">v3</span></td><td>Creative Credits booking marketplace</td><td>v1.5 credits showing organic engagement on both sides.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  CampusPulse — Product Requirements Document v1.2 · Karma Groups · supersedes v1.0 · companion to Technical Architecture v1.2, Data Model / ERD v1.2, Brand Guidelines v1.1, core flow wireframes and the category icon system.
+</footer>
+
+</div>
+</body>
+</html>
